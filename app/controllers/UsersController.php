@@ -67,11 +67,13 @@ class UsersController extends Controller
      */
     public function login()
     {
-        if (Confide::user()) {
+		
+        $user = Auth::user();
+        if(!empty($user->id)){
             return Redirect::to('/');
-        } else {
-            return View::make(Config::get('confide::login_form'));
         }
+
+        return View::make('site/users/login');
     }
 
     /**
@@ -128,7 +130,7 @@ class UsersController extends Controller
      */
     public function forgotPassword()
     {
-        return View::make(Config::get('confide::forgot_password_form'));
+        return View::make('site/users/forgot');
     }
 
     /**
