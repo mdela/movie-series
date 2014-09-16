@@ -8,7 +8,7 @@
 				
 
 				<li class="light-blue">
-					<a href="users/log">  <span><i class="icon-user"></i> <strong>Acceder</strong></span> </a>
+					<a href="{{ URL::route('login') }}">  <span><i class="icon-user"></i> <strong>Acceder</strong></span> </a>
 
 				</li>
 				
