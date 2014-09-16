@@ -1,60 +1,74 @@
-@extends('site.layouts.default')
+@extends ('site.layouts.base_index')
 
-{{-- Web site Title --}}
 @section('title')
 {{{ Lang::get('user/user.login') }}} ::
 @parent
 @stop
 
-{{-- Content --}}
-@section('content')
-<div class="page-header">
-	<h1>Login into your account</h1>
-</div>
-<form class="form-horizontal" method="POST" action="{{ URL::to('user/login') }}" accept-charset="UTF-8">
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+@section ('pageContent')
+<div class="main-container container-fluid">
+	<a class="menu-toggler" id="menu-toggler" href="#"> <span class="menu-text"></span> </a>
+
+	@include('site.layouts.sidebar_index')
+
+	<div class="main-content">
+
+		<div class="page-content">
+            @include('site.layouts.page-header', array('titulo'=>'Accede','subtitulo'=>'Bienvenido!!'))
+
+			<div class="row-fluid">
+				<div class="span12">
+					<!--PAGE CONTENT BEGINS-->
+					<form method="POST" action="{{{ URL::to('/users/login') }}}" accept-charset="UTF-8">
+    <input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
     <fieldset>
         <div class="form-group">
-            <label class="col-md-2 control-label" for="email">{{ Lang::get('confide::confide.username_e_mail') }}</label>
-            <div class="col-md-10">
-                <input class="form-control" tabindex="1" placeholder="{{ Lang::get('confide::confide.username_e_mail') }}" type="text" name="email" id="email" value="{{ Input::old('email') }}">
-            </div>
+            <label for="email">{{{ Lang::get('confide::confide.username_e_mail') }}}</label>
+            <input class="form-control" tabindex="1" placeholder="{{{ Lang::get('confide::confide.username_e_mail') }}}" type="text" name="email" id="email" value="{{{ Input::old('email') }}}">
         </div>
         <div class="form-group">
-            <label class="col-md-2 control-label" for="password">
-                {{ Lang::get('confide::confide.password') }}
+        <label for="password">
+            {{{ Lang::get('confide::confide.password') }}}
+            <small>
+                <a href="{{{ URL::to('/users/forgot_password') }}}">{{{ Lang::get('confide::confide.login.forgot_password') }}}</a>
+            </small>
+        </label>
+        <input class="form-control" tabindex="2" placeholder="{{{ Lang::get('confide::confide.password') }}}" type="password" name="password" id="password">
+        </div>
+        <div class="form-group">
+            <label for="remember" class="checkbox">{{{ Lang::get('confide::confide.login.remember') }}}
+                <input type="hidden" name="remember" value="0">
+                <input tabindex="4" type="checkbox" name="remember" id="remember" value="1">
             </label>
-            <div class="col-md-10">
-                <input class="form-control" tabindex="2" placeholder="{{ Lang::get('confide::confide.password') }}" type="password" name="password" id="password">
-            </div>
         </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <div class="checkbox">
-                    <label for="remember">{{ Lang::get('confide::confide.login.remember') }}
-                        <input type="hidden" name="remember" value="0">
-                        <input tabindex="4" type="checkbox" name="remember" id="remember" value="1">
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        @if ( Session::get('error') )
-        <div class="alert alert-danger">{{ Session::get('error') }}</div>
+        @if (Session::get('error'))
+            <div class="alert alert-error">{{{ Session::get('error') }}}</div>
         @endif
 
-        @if ( Session::get('notice') )
-        <div class="alert">{{ Session::get('notice') }}</div>
+        @if (Session::get('notice'))
+            <div class="alert">{{{ Session::get('notice') }}}</div>
         @endif
-
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <button tabindex="3" type="submit" class="btn btn-primary">{{ Lang::get('confide::confide.login.submit') }}</button>
-                <a class="btn btn-default" href="forgot">{{ Lang::get('confide::confide.login.forgot_password') }}</a>
-            </div>
+            <button tabindex="3" type="submit" class="btn btn-default">{{{ Lang::get('confide::confide.login.submit') }}}</button>
+            <a class="btn btn-default" href="{{ URL::route('forgot') }}">{{ Lang::get('confide::confide.login.forgot_password') }}</a>
+        
+         
+			<a href="{{ URL::route('movie') }}"><span class="menu-text"> ¿No registrado? </span> </a>
         </div>
     </fieldset>
+    
 </form>
 
+
+					<!--PAGE CONTENT ENDS-->
+				</div><!--/.span-->
+			</div><!--/.row-fluid-->
+
+		</div><!--/.page-content-->
+	</div><!--/.main-content-->
+</div><!--/.main-container-->
+
+
 @stop
+
+

@@ -16,10 +16,7 @@
 
 		<div class="page-content">
             @include('site.layouts.page-header', array('titulo'=>'Registrate','subtitulo'=>'Vista de elementos'))
-@section('title')
-{{{ Lang::get('user/user.login') }}} ::
-@parent
-@stop
+
 			<div class="row-fluid">
 				<div class="span12">
 					<!--PAGE CONTENT BEGINS-->

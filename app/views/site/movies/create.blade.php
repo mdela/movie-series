@@ -30,11 +30,7 @@
 					</div>
 				
 					<div>
-						<div class="form-actions">
-							<button type="submit" id="fuente_save" name="fuente[save]" class="btn btn-info">
-								Guardar
-							</button>
-						</div>
+						
 						<div class="hr"></div>
 					</div>
 				</div>
