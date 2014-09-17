@@ -1,7 +1,7 @@
 @extends ('site.layouts.base_index')
 
 @section('title')
-{{{ Lang::get('user/user.forgot_password') }}} ::
+{{{ Lang::get('user/user.forgot_password')}}} ::
 @parent
 @stop
 
@@ -21,6 +21,8 @@
 					<!--PAGE CONTENT BEGINS-->
 					
 					{{ Confide::makeForgotPasswordForm() }}
+					
+					
 
 					<!--PAGE CONTENT ENDS-->
 				</div><!--/.span-->
