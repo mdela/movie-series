@@ -1,0 +1,21 @@
+INFORME AVANCE: 15/09/14
+
+Tematica: Site prueba en LARAVEL
+Objetivo: Implementar Laravel Bundles
+Nombre Bundle: CONFIDE , Autor: Zizaco
+
+CONFIDE es un bundle para LARAVEL que gestiona de forma automatica todo lo 
+relacionado al manejo de cuentas de usuarios (creación, login, logout, confirmación por e-mail, password reset, etc.)
+en nuestros sistemas.
+
+Actividades Realizadas:
+1) Logeo de usuarios: 100% funcional.
+2) Registro  de usuarios: Realiza el guardado perfectamente, pero persiste la falla en la redirección de páginas por problemas con el local mailer.
+3) Recuperación de contraseña: Puede accederse a la pagina mediante url /forgot. Problemas con la correcta redirección (Nota: por resolver). 
+4) Mejora de los formulaciones para cada item antes mencionado (menor codificación)
+
+TRUCO: Probar enviar form de cada item con campos vacios. 
+
+
+	
+
