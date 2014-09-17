@@ -1,0 +1,37 @@
+INFORME AVANCE: 15/09/14
+
+Tematica: Site prueba en LARAVEL
+Objetivo: Implementar Laravel Bundles
+Nombre Bundle: CONFIDE , Autor: Zizaco
+
+CONFIDE es un bundle para LARAVEL que gestiona de forma automatica todo lo 
+relacionado al manejo de cuentas de usuarios (creación, login, logout, confirmación por e-mail, password reset, etc.)
+en nuestros sistemas.
+
+Actividades Realizadas:
+1) Logeo de usuarios: 99.99% funcional.
+	TRUCO: 
+	**Si posee problemas al igual que yo con el envio de emails de confirmación:Para logeo, primero cambiar en la BD, en nuestra tabla users, 
+	el valor del campo CONFIRMED de 0 a 1 y listo.
+	
+	**Pruebe intento de logueo sin ejecutar el paso anterior, es decir, sin "confirmar" email.
+
+2) Registro  de usuarios: Realiza el guardado perfectamente, pero persiste la falla en la redirección de páginas por problemas con el local mailer.
+3) Olvido de contraseña: 99% funcional (problemas con mailer).
+		TRUCO: Probar con datos incorrectos y campos vacios. 
+
+NOTA: **Para el correcto erutamiento, nuestros archivos blade relacionados con el bundle, deben llamarse igual a la dirección de envio de formularios 
+	que por defecto trae el mismo.
+	
+	 Ejm:
+
+	Para la acción : Olvido de Contraseña.
+	bundle: src/views/forgot_password
+	blade de nuestra proyecto: users/forgot_password
+	
+	Se observa que tando el Blade para nuestro bundle, como el blade para la carpeta de nuestro proyecto poseen el mismo nombre!. Y si detallamos el blade
+	de nuestro bundle podemos notar que en la acción de nuestro form la URL establecida es users/forgot_password. Todos estos detalles deben coincidir.
+
+
+	
+

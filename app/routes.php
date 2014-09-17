@@ -17,21 +17,31 @@ Route::get('/', array(
 	{
 		return View::make('site.users.inicio');
 	}));
+	
+	
 //
 
 // Confide routes users
 	Route::get('/users/create', 				array('as' => 'create',			'uses' => 'UsersController@create'));
 	Route::post('users', 						array('as' => 'store',			'uses' => 'UsersController@store'));
-	Route::post('users/login', 					array('as' => 'do.login',		'uses' => 'UsersController@doLogin'));
-	Route::get('users/confirm/{code}', 			array('as' => 'confirm',		'uses' => 'UsersController@confirm'));
 	
-	Route::post('users/forgot_password', 		array('as' => 'forgot_password','uses' => 'UsersController@doForgotPassword'));
+	
+	Route::get('users/forgot_password',			array('as' => 'forgot_pass',	'uses' => 'UsersController@forgotPassword'));
+	Route::post('users/forgot_password',		array('as' => 'forgot_password',	'uses' => 'UsersController@doForgotPassword'));
+
 	Route::get('users/reset_password/{token}',	array('as' => 'reset.pass',		'uses' => 'UsersController@resetPassword'));
 	Route::post('users/reset_password',			array('as' => 'doreset.pass',	'uses' => 'UsersController@doResetPassword'));
 	
-	Route::get('forgot', 						array('as' => 'forgot',			'uses' => 'UsersController@forgotPassword'));
-	Route::get('logout', 						array('as' => 'logout',			'uses' => 'UsersController@logout'));
+	//Route::get('forgot', 						array('as' => 'forgot',			'uses' => 'UsersController@forgotPassword'));
+	
 	Route::get('login', 						array('as' => 'login',			'uses' => 'UsersController@login'));
+	Route::post('users/login', 					array('as' => 'do.login',		'uses' => 'UsersController@doLogin'));
+	
+	Route::get('users/confirm/{code}', 			array('as' => 'confirm',		'uses' => 'UsersController@confirm'));
+	
+	Route::get('logout', 						array('as' => 'logout',			'uses' => 'UsersController@logout'));
+	Route::get('index', 						array('as' => 'index',			'uses' => 'UsersController@get_index'));
+	
 
 
 //  Movies routes

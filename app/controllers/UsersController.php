@@ -12,15 +12,17 @@
  *
  * Implements actions regarding user management
  */
+ 
+
 class UsersController extends Controller
 {
 
-    /**
-     * Displays the form for account creation
-     *
-     * @return  Illuminate\Http\Response
-     */
-    
+     public function get_index()
+	{
+
+		$users= User::paginate(2);
+		return View::make('default.index')->with('users',$users);
+	}
     /**
      * Stores new account
      *
@@ -83,7 +85,7 @@ class UsersController extends Controller
         $input = Input::all();
 
         if ($repo->login($input)) {
-            return Redirect::intended('movie');
+            return Redirect::intended('index');
         } else {
             if ($repo->isThrottled($input)) {
                 $err_msg = Lang::get('confide::confide.alerts.too_many_attempts');
@@ -128,7 +130,10 @@ class UsersController extends Controller
      */
     public function forgotPassword()
     {
-        return View::make('site/users/forgot');
+        
+        return View::make('site/users/forgot_password');
+        
+        
     }
 
     /**
@@ -140,12 +145,12 @@ class UsersController extends Controller
     {
         if( Confide::forgotPassword( Input::get( 'email' ) ) )
         {
-            return Redirect::to('login')
+            return Redirect::to('users/login')
                 ->with( 'notice', Lang::get('confide::confide.alerts.password_forgot') );
         }
         else
         {
-            return Redirect::to('forgot')
+            return Redirect::to('users/forgot_password')
                 ->withInput()
                 ->with( 'error', Lang::get('confide::confide.alerts.wrong_password_forgot') );
         }

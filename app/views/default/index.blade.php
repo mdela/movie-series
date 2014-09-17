@@ -122,71 +122,62 @@
 										<th class="hidden-phone" >Descripcion</th>
 										<th class="hidden-phone" style="width: 136px;"><i class="icon-time bigger-110 hidden-phone"></i> Ultimo login</th>
 										<th class="hidden-480">Estatus</th>
+										<th class="hidden-480">Acción</th>
 										<th></th>
 									</tr>
 								</thead>
 								<tbody>
-									
+									@foreach($users as $user)	
 									<tr id="fila_">
-										<td >element.id</td>
-										<td >element.username</td>
-										<td >element.email</td>
-										<td >element.descripcion</td>
+										<td >{{ $user->id }}</td>
+										<td >{{ $user->username}}</td>
+										<td >{{ $user->email}}</td>
 										<td class="hidden-phone">d/m/Y H:i:s</td>
 										<td class="hidden-480"><span class="label label-success" >Habilidado</span>
 										</td>
 
 										<td>
-										<div class="hidden-phone visible-desktop btn-group" >
-											<button class="btn btn-mini btn-success cambiar-estatus" objeto="" tarea="">
-												<i class="icon-exchange bigger-120"></i>
-											</button>
-
-										</div>
-										<div class="hidden-desktop visible-phone">
-											<div class="inline position-relative">
-												<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
-													<i class="icon-cog icon-only bigger-110"></i>
+											<div class="hidden-phone visible-desktop btn-group" >
+												<button class="btn btn-mini btn-success cambiar-estatus" objeto="" tarea="">
+													<i class="icon-exchange bigger-120"></i>
 												</button>
-												<ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
-													<li>
-														<a href="#" class="tooltip-info cambiar-estatus" data-rel="tooltip" title="View" objeto="" tarea=""
-														> <span class="blue"> <i class="icon-exchange bigger-120"></i> </span> </a>
-													</li>
-												</ul>
+
 											</div>
-										</div></td>
+											<div class="hidden-desktop visible-phone">
+												<div class="inline position-relative">
+													<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
+														<i class="icon-cog icon-only bigger-110"></i>
+													</button>
+													<ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
+														<li>
+															<a href="#" class="tooltip-info cambiar-estatus" data-rel="tooltip" title="View" objeto="" tarea=""
+															> <span class="blue"> <i class="icon-exchange bigger-120"></i> </span> </a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</td>
+										
+										<td>
+											<span class="btn btn-small btn-warning" >Editar</span>
+											<span class="btn btn-small btn-danger">Eliminar</span>
+										</td>
 									</tr>
-							
+								@endforeach
 								</tbody>
 							</table>
 
 							<div class="row-fluid">
 								<div class="span6">
 									<div class="dataTables_info" id="sample-table-2_info">
-										 Resultados
+										 
+										 {{count($users)}} Resultados
 									</div>
 								</div>
 								<div class="span6">
 									<div class="dataTables_paginate paging_bootstrap pagination" style="margin: 0px;font-size: 18px;">
 
-										<ul>
-											<li class="prev disabled">
-												<a href="#"><i class="icon-double-angle-left"></i></a>
-											</li>
-											<li class="active">
-												<a href="#">1</a>
-											</li>
-											<li>
-												<a href="#">2</a>
-											</li>
-											<li>
-												<a href="#">3</a>
-											</li>
-											<li class="next">
-												<a href="#"><i class="icon-double-angle-right"></i></a>
-											</li>
-										</ul>
+										{{ $users->links() }}
 								
 									</div>
 								</div>

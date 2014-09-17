@@ -21,7 +21,7 @@ class MovieController extends BaseController {
 		$pelicula->nombre = "Teminator genesis";
 		$pelicula->duracion = "3 horas";
 		$pelicula->save();
-		return Redirect::to('pelicula');
+		return Redirect::to('movie');
 	}
 
 	public function post_save()

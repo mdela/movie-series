@@ -31,13 +31,13 @@
 									</tr>
 								</thead>
 								<tbody>
-								@foreach($movies as $element)					
+								@foreach($movies as $movie)					
 									<tr id="fila_$element->id">
-										<td >{{ $element->id }}</td>
-										<td >{{ $element->nombre }}</td>
-										<td class="hidden-phone">{{ $element->duracion }}</td>
-										<td class="hidden-phone">{{$element->created_at->format('d/m/Y H:i:s')}}</td>
-										<td class="hidden-phone">{{$element->updated_at->format('d/m/Y H:i:s')}}</td>
+										<td >{{ $movie->id }}</td>
+										<td >{{ $movie->nombre }}</td>
+										<td class="hidden-phone">{{ $movie->duracion }}</td>
+										<td class="hidden-phone">{{$movie->created_at->format('d/m/Y H:i:s')}}</td>
+										<td class="hidden-phone">{{$movie->updated_at->format('d/m/Y H:i:s')}}</td>
 									</tr>
 								@endforeach
 								</tbody>
