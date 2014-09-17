@@ -20,11 +20,7 @@ class UsersController extends Controller
      *
      * @return  Illuminate\Http\Response
      */
-    public function create()
-    {
-        return View::make(Config::get('confide::signup_form'));
-    }
-
+    
     /**
      * Stores new account
      *
@@ -49,12 +45,12 @@ class UsersController extends Controller
                 );
             }
 
-            return Redirect::action('UsersController@login')
+            return Redirect::action('login')
                 ->with('notice', Lang::get('confide::confide.alerts.account_created'));
         } else {
             $error = $user->errors()->all(':message');
 
-            return Redirect::action('UsersController@create')
+            return Redirect::action('home')
                 ->withInput(Input::except('password'))
                 ->with('error', $error);
         }
@@ -87,7 +83,7 @@ class UsersController extends Controller
         $input = Input::all();
 
         if ($repo->login($input)) {
-            return Redirect::intended('/');
+            return Redirect::intended('movie');
         } else {
             if ($repo->isThrottled($input)) {
                 $err_msg = Lang::get('confide::confide.alerts.too_many_attempts');
@@ -97,11 +93,13 @@ class UsersController extends Controller
                 $err_msg = Lang::get('confide::confide.alerts.wrong_credentials');
             }
 
-            return Redirect::action('UsersController@login')
+            return Redirect::action('login')
                 ->withInput(Input::except('password'))
                 ->with('error', $err_msg);
         }
     }
+
+
 
     /**
      * Attempt to confirm account with code
@@ -140,15 +138,16 @@ class UsersController extends Controller
      */
     public function doForgotPassword()
     {
-        if (Confide::forgotPassword(Input::get('email'))) {
-            $notice_msg = Lang::get('confide::confide.alerts.password_forgot');
-            return Redirect::action('UsersController@login')
-                ->with('notice', $notice_msg);
-        } else {
-            $error_msg = Lang::get('confide::confide.alerts.wrong_password_forgot');
-            return Redirect::action('UsersController@doForgotPassword')
+        if( Confide::forgotPassword( Input::get( 'email' ) ) )
+        {
+            return Redirect::to('login')
+                ->with( 'notice', Lang::get('confide::confide.alerts.password_forgot') );
+        }
+        else
+        {
+            return Redirect::to('forgot')
                 ->withInput()
-                ->with('error', $error_msg);
+                ->with( 'error', Lang::get('confide::confide.alerts.wrong_password_forgot') );
         }
     }
 
@@ -182,11 +181,11 @@ class UsersController extends Controller
         // By passing an array with the token, password and confirmation
         if ($repo->resetPassword($input)) {
             $notice_msg = Lang::get('confide::confide.alerts.password_reset');
-            return Redirect::action('UsersController@login')
+            return Redirect::action('login')
                 ->with('notice', $notice_msg);
         } else {
             $error_msg = Lang::get('confide::confide.alerts.wrong_password_reset');
-            return Redirect::action('UsersController@resetPassword', array('token'=>$input['token']))
+            return Redirect::action('resetPassword', array('token'=>$input['token']))
                 ->withInput()
                 ->with('error', $error_msg);
         }

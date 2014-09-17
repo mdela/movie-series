@@ -1,8 +1,9 @@
 <div class="sidebar" id="sidebar">
 	<div class="sidebar-shortcuts" id="sidebar-shortcuts">
 		<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+			
 			<button class="btn btn-small btn-success" >
-				<i class="icon-home"></i>
+				<a href="{{ URL::route('home')}}"><i class="icon-home"></i></a>
 			</button>
 
 			<button class="btn btn-small btn-info">

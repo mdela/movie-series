@@ -1,5 +1,6 @@
 <?php
 
+
 use Zizaco\Confide\ConfideUser;
 use Zizaco\Confide\ConfideUserInterface;
 
