@@ -11,7 +11,7 @@ en nuestros sistemas.
 Actividades Realizadas:
 1) Descarga del paquete
 2) Implementación de form para el registro de nuevos usuarios
-    NOTA: Realiza el guardo perfectamente, pero presento problemas al no poder redirigir la pagina correctamente. 
+    NOTA: Realiza el guardado perfectamente, pero presento problemas al no poder redirigir la pagina correctamente. 
 	
 Ventajas:
 Elimina la tarea tediosa de generar las tablas de la BD, formularios y mensajes de error de manera manual.
