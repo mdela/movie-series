@@ -21,7 +21,7 @@
 				<div class="span12">
 					<!--PAGE CONTENT BEGINS-->
 					{{ Confide::makeSignupForm()->render() }}	
-					
+			
 					<!--PAGE CONTENT ENDS-->
 				</div><!--/.span-->
 			</div><!--/.row-fluid-->
