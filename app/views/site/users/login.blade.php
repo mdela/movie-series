@@ -23,10 +23,6 @@
 							
 						
 								<a href="{{ URL::route('home') }}">¿No registrado? </a>
-								
-							
-								
-							 
 							
 					<!--PAGE CONTENT ENDS-->
 				</div><!--/.span-->

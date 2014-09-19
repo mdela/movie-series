@@ -10,9 +10,9 @@
 	<div class="main-content">
 
 		<div class="page-content">
-			@include('helpers.page-header', array('titulo'=>'Peliculas','subtitulo'=>'Vista de elementos'))
+			@include('helpers.page-header', array('titulo'=>'Series','subtitulo'=>'Vista de elementos'))
 
-			{{ Form::open(array('action' => 'PeliculaController@post_save','class' => 'form-horizontal')) }}
+			{{ Form::open(array('action' => 'SeriesController@post_save','class' => 'form-horizontal')) }}
 				<div id="fuente" class="form-horizontal">
 					<div class="control-group">
 						<label class="control-label" for="form-field-1"><label for="fuente_nombre" class="required">Nombre</label></label>

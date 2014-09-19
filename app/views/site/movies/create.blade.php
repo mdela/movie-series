@@ -23,18 +23,23 @@
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="form-field-1"><label for="fuente_url" class="required">Duracion</label></label>
-						<div class="controls">
+					<div class="controls">
 
 							{{ Form::text('duracion','',array('id'=>'','class'=>'')) }}
 						</div>
 					</div>
 				
 					<div>
-						
+						<div class="form-actions">
+							<button type="submit" id="fuente_save" name="fuente[save]" class="btn btn-info">
+								Guardar
+							</button>
+						</div>
 						<div class="hr"></div>
 					</div>
 				</div>
 			{{ Form::close() }}
+
 
 		</div><!--/.page-content-->
 	</div><!--/.main-content-->
