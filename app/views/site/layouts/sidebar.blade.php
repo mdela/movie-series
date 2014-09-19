@@ -31,7 +31,7 @@
 
 	<ul class="nav nav-list">
 		<li >
-			<a href="{{ URL::route('index') }}"> <i class="icon-dashboard"></i> <span class="menu-text"> Panel de Control </span> </a>
+			<a href="{{ URL::route('principal') }}"> <i class="icon-dashboard"></i> <span class="menu-text"> Panel de Control </span> </a>
 		</li>
 		{{--<li class="active">
 			<a href="#" > <i class="icon-key"></i> <span class="menu-text"> Iniciar sesión </span> </a>

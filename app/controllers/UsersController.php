@@ -17,12 +17,7 @@
 class UsersController extends Controller
 {
 
-     public function get_index()
-	{
-
-		$users= User::paginate(2);
-		return View::make('default.index')->with('users',$users);
-	}
+    
     /**
      * Stores new account
      *
@@ -205,6 +200,6 @@ class UsersController extends Controller
     {
         Confide::logout();
 
-        return Redirect::to('/');
+        return Redirect::action('home');
     }
 }

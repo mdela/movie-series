@@ -88,3 +88,17 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+/*
+|--------------------------------------------------------------------------
+| ENTRUST Filter
+|--------------------------------------------------------------------------
+|
+| 
+|
+*/	
+	//Entrust::routeNeedsPermission( 'site/movies*', 'can_edit' );
+
+	// Only owners will have access to routes within admin/advanced
+	Entrust::routeNeedsRole( 'site/movies*', 'Admin', Redirect::to('home'));
+		
