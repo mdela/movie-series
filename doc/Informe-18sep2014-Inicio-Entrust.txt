@@ -7,7 +7,10 @@ Nombre Bundle: ENTRUST , Autor: Zizaco
 ENTRUST es un bundle para LARAVEL que gestiona de manera automatica los roles y permisos de los usuarios.
 
 Actividades Realizadas:
-1) Instalación de bundle Entrust
+1) Instalación de bundle Entrust: 100%  
+	NOTA: Pasos de Instalación -> https://github.com/Zizaco/entrust 
+				(solo realizar los comandos de consola, todos los archivos estan cargados)
+
 2) Registro  de roles y permisos de usuarios: Realiza el guardado perfectamente,
     pero presenta un error de "duplicación" de datos cada vez que se intenta acceder a Home debido a que en /routes.php 
    se tiene establecido guardar estos datos cada vez que se ingrese. No se resolver el problema porque es necesario que 

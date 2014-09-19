@@ -1,0 +1,16 @@
+Comandos para cargar Bundles : CONFIDE & ENTRUST, Autor: Zizaco
+
+Comandos (una vez ubicados en la carpeta raiz):
+
+1) composer update
+
+2) php artisan migrate
+
+3) composer dump-autoload
+
+NOTA: Ya todos los archivos y rutas estan cargados, solo es necesario aplicar los antes mencionados comandos.
+
+
+Mas info: 
+	https://github.com/Zizaco/entrust
+	https://github.com/Zizaco/confide

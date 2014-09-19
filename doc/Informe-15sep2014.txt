@@ -9,7 +9,9 @@ relacionado al manejo de cuentas de usuarios (creación, login, logout, confirmac
 en nuestros sistemas.
 
 Actividades Realizadas:
-1) Descarga del paquete
+1) Descarga del paquete:100%  
+	NOTA: Pasos de Instalación -> https://github.com/Zizaco/confide
+				(solo realizar los comandos de consola, todos los archivos estan cargados)
 2) Implementación de form para el registro de nuevos usuarios
     NOTA: Realiza el guardado perfectamente, pero presento problemas al no poder redirigir la pagina correctamente. 
 	
