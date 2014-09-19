@@ -1,0 +1,20 @@
+INFORME AVANCE: 18/09/14
+
+Tematica: Site prueba en LARAVEL
+Objetivo: Implementar Laravel Bundles
+Nombre Bundle: ENTRUST , Autor: Zizaco
+
+ENTRUST es un bundle para LARAVEL que gestiona de manera automatica los roles y permisos de los usuarios.
+
+Actividades Realizadas:
+1) Instalación de bundle Entrust
+2) Registro  de roles y permisos de usuarios: Realiza el guardado perfectamente,
+    pero presenta un error de "duplicación" de datos cada vez que se intenta acceder a Home debido a que en /routes.php 
+   se tiene establecido guardar estos datos cada vez que se ingrese. No se resolver el problema porque es necesario que 
+   esos datos se guarden de manera automatica, aunque solo la primera vez.
+3) Redireccionamiento segun rol: 100%
+4) Redireccionamiento child segun permiso: 20%. (Por solucionar:...problema con filtros entrust)
+
+NOTA: **Para probar item 3: URL: http://localhost:8000/principal , e ingresar con cuenta de admin y cualquier otro usuario !=admin.
+	
+	
