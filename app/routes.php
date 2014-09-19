@@ -30,7 +30,7 @@
 			}
 			else {
 				Auth::logout();
-				return Redirect::action('/')->with('flash_notice', 'You don\'t have access!');
+				return Redirect::action('home')->with('flash_notice', 'You don\'t have access!');
 			}
 	 
 		return App::abort(403);
@@ -57,33 +57,22 @@
 	Route::get('logout', 						array('as' => 'logout',			'uses' => 'UsersController@logout'));
 	
 
-
-//  Movies routes
+// Movie SHOW-->todos los roles
 	
-	Route::group(array('/' => 'movie'), function()
-	{
-		Route::get('movie', 					array('as' => 'movie',			'uses' => 'MovieController@get_index'));
-		Route::get('movie/create', 				array('as' => 'movie.create', 	'uses' => 'MovieController@get_create'));
-		Route::get('movie/update/{id_movie}', 	array('as' => 'movie.update', 	'uses' => 'MovieController@get_update'));
-		Route::get('movie/view/{id_movie}',		array('as' => 'movie.view', 	'uses' => 'MovieController@get_view'));
-		Route::get('movie/delete/{id_movie}',	array('as' => 'movie.delete', 	'uses' => 'MovieController@get_delete'));
-		Route::post('movie/save',				array('as' => 'movie.save', 	'uses' => 'MovieController@post_save'));
-	});
-	
-	
-	//
-	Route::when('/movies*', 'can_edit');
-	Route::group(array('/' => 'movie'), function()
-	{
-		Route::get('movie', 					array('as' => 'movie',			'uses' => 'MovieController@get_index'));
-		Route::get('movie/create', 				array('as' => 'movie.create', 	'uses' => 'MovieController@get_create'));
-		Route::get('movie/update/{id_movie}', 	array('as' => 'movie.update', 	'uses' => 'MovieController@get_update'));
-		Route::get('movie/view/{id_movie}',		array('as' => 'movie.view', 	'uses' => 'MovieController@get_view'));
-		Route::get('movie/delete/{id_movie}',	array('as' => 'movie.delete', 	'uses' => 'MovieController@get_delete'));
-		Route::post('movie/save',				array('as' => 'movie.save', 	'uses' => 'MovieController@post_save'));
+	Route::get('movie',							array('as' => 'movie',			'before' => ['auth', 'principal'],			'uses' => 'MovieController@get_index'));
 			
-	});
+//
 
+//  Movies filters
+		Route::get('movie/create', 				array('as' => 'movie.create',	'before' => ['auth', 'permissionAdmin'],	'uses' => 'MovieController@get_index'));
+		Route::get('movie/update/{id_movie}', 	array('as' => 'movie.update',	'before' => ['auth', 'permissionAdmin'],	'uses' => 'MovieController@get_index'));
+		Route::get('movie/view/{id_movie}',		array('as' => 'movie.view',		'before' => ['auth', 'permissionAdmin'],	'uses' => 'MovieController@get_index'));
+		Route::get('movie/delete/{id_movie}',	array('as' => 'movie.delete',	'before' => ['auth', 'permissionAdmin'],	'uses' => 'MovieController@get_index'));
+		Route::post('movie/save',				array('as' => 'movie.save',		'before' => ['auth', 'permissionAdmin'],	'uses' => 'MovieController@get_index'));
+	
+//
+
+//
 // Entrust roles
 
 	Route::get('/', array(

@@ -97,8 +97,22 @@ Route::filter('csrf', function()
 | 
 |
 */	
-	//Entrust::routeNeedsPermission( 'site/movies*', 'can_edit' );
-
-	// Only owners will have access to routes within admin/advanced
-	Entrust::routeNeedsRole( 'site/movies*', 'Admin', Redirect::to('home'));
-		
+	Route::filter('principal', function()
+	{
+		$user = Auth::user();
+	 
+		if (!$user)
+		{
+			return Redirect::home();
+		}
+	});
+	
+	Route::filter('permissionAdmin', function()
+	{
+		$user = Auth::user();
+	 
+		if (!$user->ability(['Admin'], ['can_edit']))
+		{
+			return Redirect::home();
+		}
+	});
