@@ -113,6 +113,6 @@ Route::filter('csrf', function()
 	 
 		if (!$user->ability(['Admin'], ['can_edit']))
 		{
-			return Redirect::home();
+			return Redirect::action('principal');
 		}
 	});
