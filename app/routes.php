@@ -11,15 +11,15 @@
 |
 */
 
-//HOME Page
-	Route::get('home',array('as' => 'home', function()
+	//HOME Page
+	Route::get('/',array('as' => 'home', function()
 	{
 		// Return about us page
 		return View::make('default.home');
 	}));
 	
 	// Principal page
-	Route::get('principal', array('as' => 'principal', 'before' => 'auth', function()
+	Route::get('principal', array('as' => 'principal', 'before' => ['auth', 'principal'], function()
 	{
 		if(Entrust::hasRole('User')) {
 				return View::make('site.users.index');
@@ -64,60 +64,58 @@
 //
 
 //  Movies filters
-		Route::get('movie/create', 				array('as' => 'movie.create',	'before' => ['auth', 'permissionAdmin'],	'uses' => 'MovieController@get_index'));
-		Route::get('movie/update/{id_movie}', 	array('as' => 'movie.update',	'before' => ['auth', 'permissionAdmin'],	'uses' => 'MovieController@get_index'));
-		Route::get('movie/view/{id_movie}',		array('as' => 'movie.view',		'before' => ['auth', 'permissionAdmin'],	'uses' => 'MovieController@get_index'));
-		Route::get('movie/delete/{id_movie}',	array('as' => 'movie.delete',	'before' => ['auth', 'permissionAdmin'],	'uses' => 'MovieController@get_index'));
-		Route::post('movie/save',				array('as' => 'movie.save',		'before' => ['auth', 'permissionAdmin'],	'uses' => 'MovieController@get_index'));
+		Route::get('movie/create', 				array('as' => 'movie.create',	'before' => ['auth', 'permissionAdmin'],	'uses' => 'MovieController@get_create'));
+		Route::get('movie/update/{id_movie}', 	array('as' => 'movie.update',	'before' => ['auth', 'permissionAdmin'],	'uses' => 'MovieController@get_update'));
+		Route::get('movie/view/{id_movie}',		array('as' => 'movie.view',		'before' => ['auth', 'permissionAdmin'],	'uses' => 'MovieController@get_view'));
+		Route::get('movie/delete/{id_movie}',	array('as' => 'movie.delete',	'before' => ['auth', 'permissionAdmin'],	'uses' => 'MovieController@get_delete'));
+		Route::post('movie/save',				array('as' => 'movie.save',		'before' => ['auth', 'permissionAdmin'],	'uses' => 'MovieController@post_save'));
 	
 //
 
 //
-// Entrust roles
+// Entrust roles definition
 
-	Route::get('/', array(
-	'as'=>'home',function()
-	{
-		$admin = new Role();
-		$admin->name = 'Admin';
-		$admin->save();
+//----------------------------COMMENTED AFTER SAVE()----------------->
+
+	
+	//Route::get('/',function()
+	//{
+		
+		
+		//$admin = new Role();
+		//$admin->name = 'Admin';
+		
+		//$admin->save();
+		
+		//$user = new Role();
+		//$user->name = 'User';
+		//$user->save();
 	  
-		$user = new Role();
-		$user->name = 'User';
-		$user->save();
+		//$read = new Permission();
+		//$read->name = 'can_read';
+		//$read->display_name = 'Can Read Data';
+		//$read->save();
 	  
-		$read = new Permission();
-		$read->name = 'can_read';
-		$read->display_name = 'Can Read Data';
-		$read->save();
+		//$edit = new Permission();
+		//$edit->name = 'can_edit';
+		//$edit->display_name = 'Can Edit Data';
+		//$edit->save();
 	  
-		$edit = new Permission();
-		$edit->name = 'can_edit';
-		$edit->display_name = 'Can Edit Data';
-		$edit->save();
-	  
-		$user->attachPermission($read);
-		$admin->attachPermission($read);
-		$admin->attachPermission($edit);
+		//$user->attachPermission($read);
+		//$admin->attachPermission($read);
+		//$admin->attachPermission($edit);
 	 
-		$adminRole 	= DB::table('roles')->where('name', '=', 'Admin')->pluck('id');
-		$userRole 	= DB::table('roles')->where('name', '=', 'User')->pluck('id');
+		
 		// print_r($userRole);
 		// die();
 	  
-		$user1 = User::where('username','=','admin')->first();
-		$user1->roles()->attach($adminRole);
-		$user2 = User::where('username','!=','admin')->first();
-		$user2->roles()->attach($userRole);
-
+		//$user1 = User::where('username','=','admin')->first();
+		//$user1->roles()->attach($admin);
+		//$user2 = User::where('username','!=','admin')->first();
+		//$user2->roles()->attach($user);
 		
-		
-	}));
+	//});
 	
-		
-	
-
-
 	
 	
 	
