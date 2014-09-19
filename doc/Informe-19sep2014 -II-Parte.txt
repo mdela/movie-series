@@ -1,0 +1,22 @@
+INFORME AVANCE: 19/09/14 -----> II Parte
+
+Tematica: Site prueba en LARAVEL
+Objetivo: Implementar Laravel Bundles
+Nombre Bundle: ENTRUST , Autor: Zizaco
+
+ENTRUST es un bundle para LARAVEL que gestiona de manera automatica los roles y permisos de los usuarios.
+
+Actividades Realizadas:
+
+1) Resuelto problema de duplicación de datos. Seguir siguientes pasos:
+	
+	Instrucciones: 
+	a) Ir al archivo routes.php y descomentar las lineas comprendisdas entre la 81 y 117. Guardar.
+	b) Ejecutar comando $ php artisan serve ,para acceder a la URL: localhost:8000
+	c) Se mostrará error, cuando esto ocurra, volver al Item a) y ahora comentar nuevamente las lineas referidas y guardar.
+	d) Refrescar nuestra URL: localhost:8000
+	e) Bienvenido a Movie-Series.
+
+	NOTA: Indispensable registrar un nuevo usuario con el username= admin.
+	TRUCO: Probar restricción de acceso segun rol intentado acceder al link "Nuevo" del apartado "Peiculas" de nuestro menú,
+		tando para usuario-->username= "admin" y usuario-->username != "admin"
