@@ -1,0 +1,18 @@
+INFORME AVANCE: 19/09/14
+
+Tematica: Site prueba en LARAVEL
+Objetivo: Implementar Laravel Bundles
+Nombre Bundle: ENTRUST , Autor: Zizaco
+
+ENTRUST es un bundle para LARAVEL que gestiona de manera automatica los roles y permisos de los usuarios.
+
+Actividades Realizadas:
+1)  Redireccionamiento segun rol: 100%
+2) Redireccionamiento child segun permiso: 100%. 
+
+NOTA: **Para probar item 3: URL: http://localhost:8000/principal , e ingresar con cuenta de admin y cualquier otro usuario !=admin.
+	
+	
+Actividades A Realizar:
+
+1) Resolver problema de duplicación de datos.
