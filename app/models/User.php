@@ -10,4 +10,11 @@ class User extends Eloquent implements ConfideUserInterface
 {
     use ConfideUser;
     use HasRole; 
+    
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
 }

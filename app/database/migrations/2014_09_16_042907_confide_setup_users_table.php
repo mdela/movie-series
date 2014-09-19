@@ -9,6 +9,7 @@ class ConfideSetupUsersTable extends Migration
      */
     public function up()
     {
+		
         // Creates the users table
         Schema::create('users', function ($table) {
             $table->increments('id');
@@ -27,6 +28,42 @@ class ConfideSetupUsersTable extends Migration
             $table->string('token');
             $table->timestamp('created_at');
         });
+        
+        
+        
+        
+        $admin = new Role();
+		$admin->name = 'Admin';
+		$admin->save();
+	  
+		$user = new Role();
+		$user->name = 'User';
+		$user->save();
+	  
+		$read = new Permission();
+		$read->name = 'can_read';
+		$read->display_name = 'Can Read Data';
+		$read->save();
+	  
+		$edit = new Permission();
+		$edit->name = 'can_edit';
+		$edit->display_name = 'Can Edit Data';
+		$edit->save();
+	  
+		$user->attachPermission($read);
+		$admin->attachPermission($read);
+		$admin->attachPermission($edit);
+	 
+		
+		// print_r($userRole);
+		// die();
+	  
+		$user1 = User::where('username','=','admin')->first();
+		$user1->roles()->attach($admin);
+		$user2 = User::where('username','!=','admin')->first();
+		$user2->roles()->attach($user);
+		
+		return Redirect::action('home');
     }
 
     /**
